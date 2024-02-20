@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Backend test and MongoDB
+    name: Backend Test
     runs-on: ubuntu-latest
 
     defaults:
