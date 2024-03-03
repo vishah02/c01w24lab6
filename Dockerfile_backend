@@ -1,0 +1,23 @@
+# Use the official Node.js image as the base image for frontend
+FROM node:20.0.0-alpine AS backend
+
+# Set the working directory for frontend
+WORKDIR /app/quirknotes/backend
+
+# Copy backend package files
+COPY quirknotes/backend/package*.json ./
+
+# Install backend dependencies
+RUN npm install
+
+# Copy backend source code
+COPY quirknotes/backend ./
+
+# Build backend
+RUN npm install -g nodemon
+
+# Expose port 4000 to serve the backend
+EXPOSE 4000
+
+# Command to start nginx and serve backend
+CMD ["npm", "run", "dev"]
